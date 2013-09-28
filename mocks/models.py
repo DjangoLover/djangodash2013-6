@@ -47,7 +47,7 @@ class Request(models.Model):
     requested = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ['requested']
+        ordering = ['-requested']
 
     def __unicode__(self):
         return '%s %s (%s) @ %s' % (self.request_method, self.request_path, self.response_status_code, self.requested)

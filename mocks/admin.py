@@ -1,24 +1,19 @@
 from django.contrib import admin
 
-from models import Blueprint, Resource, Action, Request
+from models import Blueprint, Action, Request
 
 
-class RequestResponseInline(admin.StackedInline):
+class ActionAdmin(admin.ModelAdmin):
+    list_display = ('request_method', 'request_path', 'response_status_code', 'blueprint')
+
+
+class ActionInline(admin.StackedInline):
     model = Action
 
 
-class ResourceAdmin(admin.ModelAdmin):
-    inlines = [RequestResponseInline]
-    list_display = ('name', 'blueprint', 'actions_count')
-
-
-class ResourceInline(admin.TabularInline):
-    model = Resource
-
-
 class BlueprintAdmin(admin.ModelAdmin):
-    inlines = [ResourceInline]
-    list_display = ('name', 'description')
+    inlines = [ActionInline]
+    list_display = ('name', 'description', 'actions_count')
 
 
 class RequestAdmin(admin.ModelAdmin):
@@ -26,6 +21,5 @@ class RequestAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Blueprint, BlueprintAdmin)
-admin.site.register(Resource, ResourceAdmin)
-admin.site.register(Action)
+admin.site.register(Action, ActionAdmin)
 admin.site.register(Request, RequestAdmin)
