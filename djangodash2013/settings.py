@@ -2,7 +2,7 @@ import os
 
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -18,6 +18,8 @@ DATABASES = {
     }
 }
 
+ALLOWED_HOSTS = ['*']
+
 TIME_ZONE = 'Europe/Vienna'
 
 LANGUAGE_CODE = 'en-us'
@@ -30,6 +32,12 @@ USE_TZ = True
 
 MEDIA_ROOT = ''
 MEDIA_URL = ''
+
+STATIC_ROOT = ''
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+)
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -97,21 +105,6 @@ LOGGING = {
         },
     }
 }
-
-# Honor the 'X-Forwarded-Proto' header for request.is_secure()
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-
-# Allow all host headers
-ALLOWED_HOSTS = ['*']
-
-# Static asset configuration
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = 'staticfiles'
-STATIC_URL = '/static/'
-
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
 
 try:
     from local_settings import SECRET_KEY
