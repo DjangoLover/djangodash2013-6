@@ -3,10 +3,6 @@ from django.contrib import admin
 from models import Blueprint, Action, Request
 
 
-class ActionAdmin(admin.ModelAdmin):
-    list_display = ('request_method', 'request_path', 'response_status_code', 'blueprint')
-
-
 class ActionInline(admin.StackedInline):
     model = Action
 
@@ -22,5 +18,4 @@ class RequestAdmin(admin.ModelAdmin):
                        'response_status_code', 'response_content', 'response_content_type', 'requested')
 
 admin.site.register(Blueprint, BlueprintAdmin)
-admin.site.register(Action, ActionAdmin)
 admin.site.register(Request, RequestAdmin)
