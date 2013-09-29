@@ -18,7 +18,8 @@ class BlueprintAdmin(admin.ModelAdmin):
 
 class RequestAdmin(admin.ModelAdmin):
     list_display = ('request_method', 'request_path', 'response_status_code', 'requested')
-
+    readonly_fields = ('request_method', 'request_path', 'request_accept', 'request_body',
+                       'response_status_code', 'response_content', 'response_content_type', 'requested')
 
 admin.site.register(Blueprint, BlueprintAdmin)
 admin.site.register(Action, ActionAdmin)
