@@ -120,4 +120,4 @@ STATICFILES_DIRS = (
 try:
     from local_settings import SECRET_KEY
 except ImportError:
-    SECRET_KEY = ''
+    SECRET_KEY = 'this-is-not-empty'
