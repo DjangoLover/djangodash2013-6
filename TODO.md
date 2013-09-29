@@ -1,1 +1,4 @@
-- [ ] Dashboard application for editing Blueprints
+- [ ] Add registration.
+- [ ] Add multi-user support.
+- [ ] Add editing the blueprints and defining the actions
+- [ ] Add viewing of the requests and the responses.
